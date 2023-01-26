@@ -12,16 +12,17 @@ jobs:
         steps:
             - run: mkdir -p workspace
             - run: echo "text to output here" > workspace/output.txt
-        persist_to_workspace:
-            root: workspace
-            paths:
-                - /*
+            persist_to_workspace:
+                root: workspace
+                paths:
+                    - /*
     print_output_file:
         docker:
             - image: circleci/node:13.8.0
-        attach_workspace:
-            at: /tmp/workspace
+        
         steps:
+            - attach_workspace:
+                at: /tmp/workspace
             - run: cat output.txt
 
 # Invoke jobs via workflows

@@ -10,9 +10,8 @@ jobs:
             - image: circleci/node:13.8.0
         working_directory: /tmp
         steps:
-            - run: mkdir -p workspace
-            - run: cd workspace
-            - run: cd output
+            - run: mkdir -p workspace && cd workspace
+            - run: mkdir -p output && cd output
             - run: echo "text to output here" > output.txt
             - persist_to_workspace:
                 root: workspace
